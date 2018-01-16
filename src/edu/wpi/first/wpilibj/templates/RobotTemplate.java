@@ -19,11 +19,25 @@ RobotDrive chassis = new RobotDrive(1, 2);
 Joystick leftStick = new Joystick(1);
 Relay myRelay = new Relay(2);
 
-public void autonamous() {
+public void autonomous() {
     chassis.setSafetyEnabled (false);
+    //drive forward halfspeed
     chassis.drive(-0.5, 0.0);
+    //drives 1 seconds
+    Timer.delay(1.0);
+    //spin right
+    chassis.drive(0, 0.5);
+    //spin 5 seconds
     Timer.delay(2.0);
-    chassis.drive(0.0, 0.0);
+    //spin left
+    chassis.drive(0.0, -0.5);
+    //spin for 5 seconds
+    Timer.delay(2.0);
+    //Drive in reverse
+    chassis.drive(0.5,0.0);
+    //stop
+    Timer.delay(1.0);
+    
 }
 
 public void operatorControl() {
