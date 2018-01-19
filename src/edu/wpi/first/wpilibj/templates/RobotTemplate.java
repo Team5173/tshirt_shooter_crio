@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class RobotTemplate extends SimpleRobot{
 
@@ -18,7 +19,8 @@ public RobotTemplate()
 
 RobotDrive chassis = new RobotDrive(1, 2);
 Joystick Controller = new Joystick(1);
-Relay myRelay = new Relay(2);
+Relay myRelay = new Relay(2);    
+Trigger Trigger = new Trigger(1)
 Solenoid solenoid = new Solenoid(1);
 
 public void autonomous() {
