@@ -20,7 +20,6 @@ public RobotTemplate()
 RobotDrive chassis = new RobotDrive(1, 2);
 Joystick Controller = new Joystick(1);
 Relay myRelay = new Relay(2);    
-Trigger Trigger = new Trigger(1)
 Solenoid solenoid = new Solenoid(1);
 
 public void autonomous() {
@@ -56,15 +55,16 @@ public void operatorControl() {
       else {
            myRelay.set(Relay.Value.kOff);
        }
-        if(Controller.getRawAxis(1) > .1) {
+        if(Controller.getRawAxis(3) > .7) {
            solenoid.set(true);
        }
       else {
            solenoid.set(false);
+        }
         }
         Timer.delay(0.01);
     }
     
 }
 
-}
+
