@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import java.util.concurrent.TimeUnit;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -49,17 +50,14 @@ public void operatorControl() {
     
     while (isOperatorControl() && isEnabled()){
         chassis.arcadeDrive(Controller);
-        if (Controller.getRawAxis(3) > .1) {
-            myRelay.set(Relay.Value.kForward);
-        }
-      else {
-           myRelay.set(Relay.Value.kOff);
-       }
         if(Controller.getRawAxis(3) > .7) {
-           solenoid.set(true);
-       }
-      else {
+        	myRelay.set(Relay.Value.kForward);
+        	TimeUnit.SECONDS.sleep(2);
+        	solenoid.set(true);
+        }
+        else {
            solenoid.set(false);
+           myRelay.set(Relay.Value.kOff);
         }
         }
         Timer.delay(0.01);
