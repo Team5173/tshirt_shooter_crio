@@ -1,6 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
 
-import java.util.concurrent.TimeUnit;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -8,13 +7,11 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class RobotTemplate extends SimpleRobot{
-
+Compressor c = new Compressor(1, 1);
 public RobotTemplate()
 {
-    Compressor c = new Compressor(1, 1);
     c.start();
 }
 
@@ -52,13 +49,17 @@ public void operatorControl() {
         chassis.arcadeDrive(Controller);
         if(Controller.getRawAxis(3) > .7) {
         	myRelay.set(Relay.Value.kForward);
-        	TimeUnit.SECONDS.sleep(2);
+        	Timer.delay(2.0);
         	solenoid.set(true);
+                Timer.delay(1.0);
         }
         else {
            solenoid.set(false);
            myRelay.set(Relay.Value.kOff);
         }
+        if(Controller.getRawButton(4)){
+        c.stop();
+    }
         }
         Timer.delay(0.01);
     }
