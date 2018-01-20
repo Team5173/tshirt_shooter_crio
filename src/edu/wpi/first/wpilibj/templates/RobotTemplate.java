@@ -45,6 +45,8 @@ public void autonomous() {
 public void operatorControl() {
     chassis.setSafetyEnabled(true);
     
+    c.start();
+    
     while (isOperatorControl() && isEnabled()){
         chassis.arcadeDrive(Controller);
         if(Controller.getRawAxis(3) > .7) {
