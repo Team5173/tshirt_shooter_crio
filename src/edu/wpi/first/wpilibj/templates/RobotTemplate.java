@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Analog;
 
 public class RobotTemplate extends SimpleRobot{
 Compressor c = new Compressor(1, 1);
@@ -19,6 +20,7 @@ RobotDrive chassis = new RobotDrive(1, 2);
 Joystick Controller = new Joystick(1);
 Relay myRelay = new Relay(2);    
 Solenoid solenoid = new Solenoid(1);
+Analog pressureSensor = new Analog(1);
 
 public void autonomous() {
     chassis.setSafetyEnabled (false);
@@ -65,7 +67,9 @@ public void operatorControl() {
         }
         Timer.delay(0.01);
     }
-    
+protected void exectute() {
+    SmartDashboard.putNumber("PSI:", pressureSensor.getVoltage());
+}
 }
 
 
